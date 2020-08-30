@@ -7,6 +7,7 @@ const mongoSantize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 
+const itemRouter = require('./routes/itemRouter');
 // CREATING APP
 const app = express();
 
@@ -48,6 +49,8 @@ app.use((req, res, next) => {
 	next();
 });
 
+// TODO: Mounting
+app.use('/api/v1/items', itemRouter);
 app.get('/', (req, res) => {
 	res.status(200).json({
 		status: 'OK',
