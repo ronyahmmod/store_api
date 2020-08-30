@@ -5,7 +5,8 @@ const itemShema = new mongoose.Schema(
 		itemCode: {
 			type: String,
 			required: [ true, 'An item must be a item code' ],
-			trim: true
+			trim: true,
+			unique: true
 		},
 		itemName: {
 			type: String,
