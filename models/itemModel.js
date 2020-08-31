@@ -42,10 +42,6 @@ const itemShema = new mongoose.Schema(
 			type: String,
 			required: [ true, 'Provide color of this item' ],
 			trim: true
-		},
-		wasted: {
-			type: Boolean,
-			default: false
 		}
 	},
 	{

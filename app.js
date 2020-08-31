@@ -14,6 +14,9 @@ const itemRouter = require('./routes/itemRouter');
 // CREATING APP
 const app = express();
 
+// SET UP VIEW ENGINE PUG
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
 // SET PATH OF STATIC FILES
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -53,6 +56,10 @@ app.use((req, res, next) => {
 });
 
 // TODO: Mounting
+app.get('/', (req, res) => {
+	res.status(200).render('base');
+});
+
 app.use('/api/v1/items', itemRouter);
 
 app.all('*', (req, res, next) => {
