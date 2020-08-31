@@ -7,6 +7,9 @@ const mongoSantize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 
+const AppError = require('./utils/appError');
+const globalErrorHandler = require('./controllers/errorController');
+
 const itemRouter = require('./routes/itemRouter');
 // CREATING APP
 const app = express();
@@ -51,11 +54,10 @@ app.use((req, res, next) => {
 
 // TODO: Mounting
 app.use('/api/v1/items', itemRouter);
-app.get('/', (req, res) => {
-	res.status(200).json({
-		status: 'OK',
-		message: 'Hello World!'
-	});
+
+app.all('*', (req, res, next) => {
+	next(new AppError(`Can't find ${req.originalUrl} on the server`, 404));
 });
+app.use(globalErrorHandler);
 
 module.exports = app;

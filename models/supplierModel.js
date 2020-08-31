@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const supplierModel = new mongoose.Schema({
+const supplierSchema = new mongoose.Schema({
 	supplierName: {
 		type: String,
 		required: [ true, 'A supplier must have a name' ],
@@ -25,11 +25,7 @@ const supplierModel = new mongoose.Schema({
 		trim: true
 	},
 	due: Number,
-	transactions: [
-		{
-			type: mongoose.Schema.ObjectId,
-			ref: 'TransactionS'
-		}
-	],
 	remark: String
 });
+
+module.exports = mongoose.model('Supplier', supplierSchema);

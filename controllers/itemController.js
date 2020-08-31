@@ -1,7 +1,9 @@
 const Item = require('../models/itemModel');
 const APIFeatures = require('../utils/apiFeatures');
+const AppError = require('../utils/appError');
+const catchAsync = require('../utils/catchAsync');
 
-exports.getAllItem = async (req, res, next) => {
+exports.getAllItem = catchAsync(async (req, res, next) => {
 	const features = new APIFeatures(Item.find(), req.query).filter().sort().limitFields().paginate();
 	const items = await features.query;
 	res.status(200).json({
@@ -11,9 +13,9 @@ exports.getAllItem = async (req, res, next) => {
 			items
 		}
 	});
-};
+});
 
-exports.getItem = async (req, res, next) => {
+exports.getItem = catchAsync(async (req, res, next) => {
 	const item = await Item.find({ itemCode: req.params.itemCode });
 	res.status(200).json({
 		status: 'success',
@@ -21,9 +23,9 @@ exports.getItem = async (req, res, next) => {
 			item
 		}
 	});
-};
+});
 
-exports.createItem = async (req, res, next) => {
+exports.createItem = catchAsync(async (req, res, next) => {
 	const newItem = await Item.create(req.body);
 	res.status(201).json({
 		status: 'success',
@@ -31,9 +33,9 @@ exports.createItem = async (req, res, next) => {
 			newItem
 		}
 	});
-};
+});
 
-exports.updateItem = async (req, res, next) => {
+exports.updateItem = catchAsync(async (req, res, next) => {
 	const updatedItem = await Item.findOneAndUpdate({ itemCode: req.params.itemCode }, req.body, {
 		new: true,
 		runValidators: true
@@ -44,13 +46,13 @@ exports.updateItem = async (req, res, next) => {
 			updatedItem
 		}
 	});
-};
+});
 
-exports.deleteItem = async (req, res, next) => {
+exports.deleteItem = catchAsync(async (req, res, next) => {
 	const deletedItem = await Item.findOneAndDelete({ itemCode: req.params.itemCode });
 
 	res.status(204).json({
 		status: 'ok',
 		data: null
 	});
-};
+});

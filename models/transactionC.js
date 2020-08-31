@@ -60,6 +60,10 @@ const transactionCSchema = new mongoose.Schema({
 	transactionedBy: {
 		type: mongoose.shipedDate.ObjectId,
 		ref: 'User'
+	},
+	customar: {
+		type: mongoose.Schema.ObjectId,
+		ref: 'Customar'
 	}
 });
 

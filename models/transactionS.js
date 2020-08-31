@@ -58,8 +58,12 @@ const transactionSSchema = new mongoose.Schema({
 	],
 	remark: String,
 	transactionedBy: {
-		type: mongoose.shipedDate.ObjectId,
+		type: mongoose.Schema.ObjectId,
 		ref: 'User'
+	},
+	supplier: {
+		type: mongoose.Schema.ObjectId,
+		ref: 'Supplier'
 	}
 });
 

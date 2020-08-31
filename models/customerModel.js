@@ -36,11 +36,7 @@ const customerSchema = new mongoose.Schema({
 		type: Number,
 		default: 0
 	},
-	transactions: [
-		{
-			type: mongoose.Schema.ObjectId,
-			ref: 'TransactionC'
-		}
-	],
 	remark: String
 });
+
+module.exports = mongoose.model('Customar', customerSchema);
