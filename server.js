@@ -11,10 +11,10 @@ process.on('uncaughtException', (err) => {
 	process.exit(1);
 });
 
-const DB_LOCAL = process.env.DB_LOCAL;
+const DB_CLOUD = process.env.DB_CLOUD;
 
 mongoose
-	.connect(DB_LOCAL, {
+	.connect(DB_CLOUD, {
 		useNewUrlParser: true,
 		useCreateIndex: true,
 		useFindAndModify: false,
