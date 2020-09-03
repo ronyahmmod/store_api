@@ -1,0 +1,25 @@
+/* CREATING SOME SPECIAL CLASS */
+
+.success-list {
+	background-color: rgb(6, 1, 56);
+	color: #fff;
+}
+
+.mt-custom {
+	margin-top: 100px;
+}
+
+.table-caption {
+	font-family: 'Roboto', 'sans-serif';
+	font-size: 2rem;
+	background-color: rgba(124, 255, 65, 0.3);
+	width: 35%;
+	height: 65px;
+	padding-top: 15px;
+	margin-right: auto;
+	font-weight: 400;
+}
+
+.table-header-font {
+	font-size: .7em;
+}

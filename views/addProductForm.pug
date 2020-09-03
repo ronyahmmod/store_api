@@ -1,0 +1,84 @@
+extends base
+
+block content
+    .jumbotron
+        .container
+            h4.display-4 Hello, Dear Administrator 
+            p.alert.alert-danger Please, must provide all information that start's with *
+            
+            .container
+                .card
+                    h5.card-header.bg-info.text-white.text-center.py-4
+                        strong.text-uppercase Add a new product item to the store
+
+                    //- CARD CONTENT
+                    .card-body.px-lg-5.pt-0.mb-3
+                        form(method='post' action='/addSubmitedProductData')
+                            .form-group.mt-3
+                                label.col-md-4.control-label * Enter Item Code: 
+                                .col-md-6.inputGroupContainer
+                                    .input-group
+                                        input(type="text" class='form-control' id='itemCode' name='itemCode'
+                                            placeholder='EX: ba-203 for basine and must be unique' autofocus required=true)
+
+                            .form-group.mt-3
+                                label.col-md-4.control-label * Enter Item Name: 
+                                .col-md-6.inputGroupContainer
+                                    .input-group
+                                        input(type="text" class='form-control' id='itemName' name='itemName'
+                                            placeholder='EX: White Stylish Basine' required=true)
+
+                            .form-group.mt-3
+                                label.col-md-4.control-label * Enter Item Description: 
+                                .col-md-6.inputGroupContainer
+                                    .input-group
+                                        TextArea(type="text" class='form-control' id='itemDesc' name='itemDescription'
+                                            required=true)
+                            
+                            .form-group.mt-3
+                                label.col-md-4.control-label * Enter Buy Value: 
+                                .col-md-6.inputGroupContainer
+                                    .input-group
+                                        input(type="number" class='form-control' id='buyValue' name='buyValue'
+                                            required=true)
+
+                            .form-group.mt-3
+                                label.col-md-4.control-label * Enter Sell Value: 
+                                .col-md-6.inputGroupContainer
+                                    .input-group
+                                        input(type="number" class='form-control' id='sellValue' name='sellValue'
+                                            required=true)
+
+                            .form-group.mt-3
+                                label.col-md-4.control-label * Enter Stock: 
+                                .col-md-6.inputGroupContainer
+                                    .input-group
+                                        input(type="number" class='form-control' id='stock' name='stock'
+                                            required=true)
+
+                            .form-group.mt-3
+                                label.col-md-4.control-label * Enter Item Origin: 
+                                .col-md-6.inputGroupContainer
+                                    .input-group
+                                        input(type="text" class='form-control' id='itemOrigin' name='itemOrigin'
+                                           placeholder="Enter where this product made linke china, bangladesh" required=true)
+
+                            .form-group.mt-3
+                                label.col-md-4.control-label * Enter Item Company Name: 
+                                .col-md-6.inputGroupContainer
+                                    .input-group
+                                        input(type="text" class='form-control' id='itemCompany' name='company'
+                                           placeholder="Enter which company made or provide like RAK" required=true)
+
+                            .form-group.mt-3
+                                label.col-md-4.control-label * Enter Item Color: 
+                                .col-md-6.inputGroupContainer
+                                    .input-group
+                                        input(type="text" class='form-control' id='itemColor' name='color'
+                                           placeholder="Enter Item color like blue, black, white...etc" required=true)
+
+                            .form-group.mt-4
+                                .col-md-6
+                                    button.btn.btn-primary.btn-block Submit
+
+               

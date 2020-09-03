@@ -1,0 +1,28 @@
+extends base
+
+block content
+    .jumbotron
+        .container
+            h4.display-4 Hello, Dear Administrator 
+            p.alert.alert-danger Please, must provide item code of a product
+            
+            .container
+                .card
+                    h5.card-header.bg-info.text-white.text-center.py-4
+                        strong.text-uppercase Search a product based on item code
+
+                    //- CARD CONTENT
+                    .card-body.px-lg-5.pt-0.mb-3
+                        form(method='post' action='/showSearchProductData')
+                            .form-group.mt-3
+                                label.col-md-4.control-label * Enter Item Code: 
+                                .col-md-6.inputGroupContainer
+                                    .input-group
+                                        input(type="text" class='form-control' id='itemCode' name='itemCode'
+                                            placeholder='EX: ba-203 for basine and must be unique' autofocus required=true)
+
+                            .form-group.mt-4
+                                .col-md-6
+                                    button.btn.btn-primary.btn-block Search
+
+               
