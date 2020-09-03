@@ -20,13 +20,15 @@ const itemShema = new mongoose.Schema(
 		},
 		buyValue: {
 			type: Number,
-			required: [ true, 'An item must have buy value' ],
-			trim: true
+			required: [ true, 'An item must have buy value' ]
 		},
 		sellValue: {
 			type: Number,
-			required: [ true, 'An item must have sale value' ],
-			trim: true
+			required: [ true, 'An item must have sale value' ]
+		},
+		stock: {
+			type: Number,
+			required: [ true, 'An item consist with stock' ]
 		},
 		itemOrigin: {
 			type: String,
