@@ -6,11 +6,15 @@ const helmet = require('helmet');
 const mongoSantize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 
 const itemRouter = require('./routes/itemRouter');
+const viewRouter = require('./routes/viewRouter');
+const configRouter = require('./routes/configRoutes');
 // CREATING APP
 const app = express();
 
@@ -19,6 +23,8 @@ app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 // SET PATH OF STATIC FILES
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser());
+app.use(cors());
 
 // SECURE HTTP HEADERS
 app.use(helmet());
@@ -56,11 +62,10 @@ app.use((req, res, next) => {
 });
 
 // TODO: Mounting
-app.get('/', (req, res) => {
-	res.status(200).render('base');
-});
+app.use('/', viewRouter);
 
 app.use('/api/v1/items', itemRouter);
+app.use('/api/v1/config', configRouter);
 
 app.all('*', (req, res, next) => {
 	next(new AppError(`Can't find ${req.originalUrl} on the server`, 404));
