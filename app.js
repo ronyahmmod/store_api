@@ -19,7 +19,7 @@ const configRouter = require('./routes/configRoutes');
 const app = express();
 
 // SET UP VIEW ENGINE PUG
-app.set('view engine', 'pug');
+app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 // SET PATH OF STATIC FILES
 app.use(express.static(path.join(__dirname, 'public')));
@@ -65,7 +65,7 @@ app.use((req, res, next) => {
 app.use('/', viewRouter);
 
 app.use('/api/v1/items', itemRouter);
-app.use('/api/v1/config', configRouter);
+// app.use('/api/v1/config', configRouter);
 
 app.all('*', (req, res, next) => {
 	next(new AppError(`Can't find ${req.originalUrl} on the server`, 404));
