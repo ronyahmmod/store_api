@@ -1,0 +1,30 @@
+<%- include('partials/header') %>
+
+<div class="jumbotron bg-light">
+    <h1 class="display-1 text-center text-danger"><i class="fas fa-key"></i></h1>
+    <h4 class="display-4 text-center mb-5">Authentication Reqired</h4>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 mt-3 m-auto">
+                <div class="card text-center shadow-sm">
+                    <h4 class="display-4">Login</h4>
+                    <p class="lead">I already have an account</p>
+                    <div class="card-body">
+                        <form name="login" id="login" method="post" action="/signin">
+                            <div class="form-group text-left">
+                                <label for="username">Email address</label>
+                                <input class="form-control" type="email" name="username" id="username" placeholder="Enter valid email address" required />
+                            </div>
+                            <div class="form-group text-left">
+                                <label for="password">Password</label>
+                                <input class="form-control" current-password="" type="password" name="password" id="password" placeholder="Enter password" required />
+                            </div>
+                            <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+         </div>
+    </div>
+</div>
+<%- include('partials/footer') %>

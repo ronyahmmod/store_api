@@ -1,0 +1,53 @@
+<%- include('partials/header') %>
+
+<div class="bg-light py-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 mt-3 m-auto">
+                <div class="card text-center shadow-sm">
+                    <h4 class="display-4">Sign Up</h4>
+                    <p class="lead">Please, provide your required information</p>
+                    <div class="card-body">
+                        <form name="signup" id="signup" method="post" action="/signup">
+                            <div class="form-group text-left">
+                                <label for="name">User Name</label>
+                                <input class="form-control" type=text" name="name" id="name" placeholder="Enter your name" required />
+                            </div>
+
+                            <div class="form-group text-left">
+                                <label for="email">Email address</label>
+                                <input class="form-control" type="email" name="email" id="email" placeholder="Enter valid email address" required />
+                            </div>
+
+                            <div class="form-group text-left">
+                                <label for="password">Password</label>
+                                <input class="form-control" type="password" name="password" id="password" placeholder="Enter password" required />
+                            </div>
+
+                            <div class="form-group text-left">
+                                <label for="passwordConfirm">Confirm password</label>
+                                <input class="form-control" type="password" name="passwordConfirm" id="passwordConfirm" placeholder="Enter password agian" required />
+                            </div>
+
+                            <div class="form-group text-left">
+                                <label for="photo">Upload 300 X 300 size jpeg photo</label>
+                                <input class="form-control" type="file" name="photo" id="photo" />
+                            </div>
+
+                            <div class="form-group text-left">
+                                <label for="role">Select who you are?</label>
+                                <select class="form-control" id="role" name="role">
+                                    <option value="employe" selected>Employe</option>
+                                    <option value="admin">Administrator</option>
+                                </select>
+                            </div>
+
+                            <button class="btn btn-success btn-lg btn-block" type="submit" onsubmit="handleRegister">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('partials/footer') %>

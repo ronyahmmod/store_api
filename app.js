@@ -15,6 +15,7 @@ const globalErrorHandler = require('./controllers/errorController');
 const itemRouter = require('./routes/itemRouter');
 const viewRouter = require('./routes/viewRouter');
 const configRouter = require('./routes/configRoutes');
+const userRouter = require('./routes/userRoutes');
 // CREATING APP
 const app = express();
 
@@ -63,6 +64,7 @@ app.use((req, res, next) => {
 
 // TODO: Mounting
 app.use('/', viewRouter);
+app.use('/', userRouter);
 
 app.use('/api/v1/items', itemRouter);
 // app.use('/api/v1/config', configRouter);
