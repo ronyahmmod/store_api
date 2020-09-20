@@ -1,17 +1,16 @@
-<%- include('partials/header') %>
-
+<%- include('../partials/header') %>
 <div class="bg-light py-3">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-6 mt-3 m-auto">
                 <div class="card text-center shadow-sm">
-                    <h4 class="display-4">Sign Up</h4>
-                    <p class="lead">Please, provide your required information</p>
+                    <h4 class="display-4">Add Tiles</h4>
+                    <p class="lead">All Information are sensative that effects your store</p>
                     <div class="card-body">
-                        <form name="signup" id="signup" method="post" action="/signup">
+                        <form name="addtiles" id="addtiles" method="post" action="/addtiles">
                             <div class="form-group text-left">
-                                <label for="name">User Name</label>
-                                <input class="form-control" type=text" name="name" id="name" placeholder="Enter your name" required />
+                                <label for="name">Voucher No</label>
+                                <input class="form-control" type=text" name="voucharno" id="voucharno" placeholder="Enter Vouchar No" required />
                             </div>
 
                             <div class="form-group text-left">
@@ -49,5 +48,5 @@
             </div>
         </div>
     </div>
-</div>
-<%- include('partials/footer') %>
+</div>   
+<%- include('../partials/footer') %>

@@ -39,7 +39,7 @@ if (process.env.NODE_ENV === 'development') {
 const limiter = rateLimit({
 	max: 100,
 	windowMs: 60 * 60 * 1000,
-	message: 'Too many request from the same IP address, Plz try again latter'
+	message: 'Too many request from the same IP address, Plz try again in an hour'
 });
 
 app.use('/api', limiter);
@@ -54,7 +54,11 @@ app.use(xss());
 app.use(mongoSantize());
 
 // PREVENTING PARAMETER POLUTION
-app.use(hpp());
+app.use(
+	hpp({
+		whitelist: []
+	})
+);
 
 // CUSTOM MIDDLEWARE FUNCTION FOR GENERATING requestTime of req
 app.use((req, res, next) => {
@@ -64,7 +68,8 @@ app.use((req, res, next) => {
 
 // TODO: Mounting
 app.use('/', viewRouter);
-app.use('/', userRouter);
+
+app.use('/api/v1/users', userRouter);
 
 app.use('/api/v1/items', itemRouter);
 // app.use('/api/v1/config', configRouter);
