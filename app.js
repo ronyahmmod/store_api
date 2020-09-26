@@ -14,7 +14,7 @@ const globalErrorHandler = require('./controllers/errorController');
 
 const viewRouter = require('./routes/viewRouter');
 const userRouter = require('./routes/userRoutes');
-const { urlencoded } = require('body-parser');
+const categoryRouter = require('./routes/categoryRoutes');
 // CREATING APP
 const app = express();
 
@@ -69,6 +69,7 @@ app.use((req, res, next) => {
 app.use('/', viewRouter);
 
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/category', categoryRouter);
 
 app.all('*', (req, res, next) => {
 	next(new AppError(`Can't find ${req.originalUrl} on the server`, 404));
