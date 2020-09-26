@@ -1,24 +1,15 @@
 const mongoose = require('mongoose');
 
 const creditSchema = new mongoose.Schema({
+	name: String,
+	description: String,
+	amount: Number,
 	creditedDate: {
 		type: Date,
-		required: [ true, 'Credit must have a date' ],
 		default: Date.now()
 	},
-	task: {
-		type: String,
-		required: [ true, 'Credit must have a task' ]
-	},
-	amount: {
-		type: Number,
-		required: [ true, 'Credit must have amount' ]
-	},
-	remark: String,
-	creditedBy: {
-		type: mongoose.Schema.ObjectId,
-		ref: 'User'
-	}
+	remark: String
 });
 
-module.exports = mongoose.model('Credit', creditSchema);
+const credit = mongoose.model('Crdit', creditSchema);
+module.exports = credit;

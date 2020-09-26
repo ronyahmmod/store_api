@@ -10,6 +10,8 @@ const userSchema = new mongoose.Schema({
 		required: [ true, 'A user must have a name' ],
 		trim: true
 	},
+	fatherName: String,
+	motherName: String,
 	email: {
 		type: String,
 		required: [ true, 'A user must have email address' ],
@@ -57,7 +59,18 @@ const userSchema = new mongoose.Schema({
 		type: Boolean,
 		default: true,
 		select: false
-	}
+	},
+	nid: String,
+	soldProduct: Number,
+	joinDate: {
+		type: Date
+	},
+	mobile: {
+		type: String,
+		required: [ true, 'A user have mobile number' ],
+		trim: true
+	},
+	remark: String
 });
 
 userSchema.pre('save', async function(next) {

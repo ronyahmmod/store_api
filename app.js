@@ -12,10 +12,9 @@ const cors = require('cors');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 
-const itemRouter = require('./routes/itemRouter');
 const viewRouter = require('./routes/viewRouter');
-const configRouter = require('./routes/configRoutes');
 const userRouter = require('./routes/userRoutes');
+const { urlencoded } = require('body-parser');
 // CREATING APP
 const app = express();
 
@@ -24,7 +23,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 // SET PATH OF STATIC FILES
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser());
+app.use(bodyParser.json()).use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
 // SECURE HTTP HEADERS
@@ -70,9 +69,6 @@ app.use((req, res, next) => {
 app.use('/', viewRouter);
 
 app.use('/api/v1/users', userRouter);
-
-app.use('/api/v1/items', itemRouter);
-// app.use('/api/v1/config', configRouter);
 
 app.all('*', (req, res, next) => {
 	next(new AppError(`Can't find ${req.originalUrl} on the server`, 404));
