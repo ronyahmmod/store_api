@@ -57,12 +57,20 @@ const productSchema = new mongoose.Schema({
 		unique: true
 	},
 	category: {
-		type: mongoose.Schema.Types.ObjectId,
+		type: mongoose.Schema.ObjectId,
 		ref: 'Category',
 		required: [ true, 'A product must have a category' ]
 	},
 	taxPercentage: Number,
 	remark: String
+});
+
+productSchema.pre(/^find/, function(next) {
+	this.populate({
+		path: 'category',
+		select: '-__v'
+	});
+	next();
 });
 
 const product = mongoose.model('Product', productSchema);
