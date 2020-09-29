@@ -61,6 +61,11 @@ const productSchema = new mongoose.Schema({
 		ref: 'Category',
 		required: [ true, 'A product must have a category' ]
 	},
+	stockId: {
+		type: mongoose.Schema.ObjectId,
+		ref: 'Stock',
+		required: [ true, 'A product must have a stock' ]
+	},
 	taxPercentage: Number,
 	remark: String
 });
