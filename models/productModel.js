@@ -83,8 +83,7 @@ productSchema.pre(/^find/, function(next) {
 productSchema.virtual('stock', {
 	ref: 'Stock',
 	foreignField: 'product',
-	localField: '_id',
-	justOne: true
+	localField: '_id'
 });
 const product = mongoose.model('Product', productSchema);
 module.exports = product;

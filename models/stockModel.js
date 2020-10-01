@@ -4,7 +4,9 @@ const stockSchema = new mongoose.Schema({
 	product: {
 		type: mongoose.Schema.ObjectId,
 		ref: 'Product',
-		required: [ true, 'Must use a product' ]
+		required: [ true, 'Must use a product' ],
+		unique: true,
+		index: true
 	},
 	inStock: {
 		type: Number,
