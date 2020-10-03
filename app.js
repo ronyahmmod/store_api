@@ -2,6 +2,7 @@ const express = require('express');
 const loadLibrary = require('./helper/loadLibrary');
 const mounting = require('./helper/mounting');
 const globalErrorHandler = require('./controllers/errorController');
+const AppError = require('./utils/appError');
 
 // CREATING APP
 const app = express();

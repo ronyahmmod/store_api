@@ -6,7 +6,7 @@ const User = require('../models/userModel');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 const sendEmail = require('../utils/mail');
-const { has } = require('express-mongo-sanitize');
+const { resolveAny } = require('dns');
 
 const signToken = (id) => {
 	return jwt.sign({ id: id }, process.env.JWT_SECRET, {
@@ -36,7 +36,8 @@ exports.signup = catchAsync(async (req, res, next) => {
 		name: req.body.name,
 		email: req.body.email,
 		password: req.body.password,
-		passwordConfirm: req.body.passwordConfirm
+		passwordConfirm: req.body.passwordConfirm,
+		mobile: req.body.mobile
 		// photo: req.body.photo
 	});
 	if (!newUser) {
@@ -93,9 +94,11 @@ exports.protect = catchAsync(async (req, res, next) => {
 
 exports.restrictTo = (...roles) => {
 	return (req, res, next) => {
+		console.log(req.user.role === roles[0]);
 		if (!roles.includes(req.user.role)) {
 			return next(new AppError('You dont have permission to perform this action', 403));
 		}
+		next();
 	};
 };
 

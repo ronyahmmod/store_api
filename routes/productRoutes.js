@@ -1,16 +1,20 @@
 const express = require('express');
 const productController = require('../controllers/productController');
 const stockRouter = require('../routes/stockRoutes');
+const authController = require('../controllers/authController');
 
 const router = express.Router();
 
 // product/5f733307c26ef62f0083f77f/stock
 router.use('/:productId/stock', stockRouter);
-router.route('/').get(productController.getAllProduct).post(productController.createProduct);
+router
+	.route('/')
+	.get(authController.protect, authController.restrictTo('employe'), productController.getAllProduct)
+	.post(authController.protect, authController.restrictTo('employe'), productController.createProduct);
 router
 	.route('/:id')
-	.get(productController.getProduct)
-	.patch(productController.updateProduct)
-	.delete(productController.deleteProduct);
+	.get(authController.protect, productController.getProduct)
+	.patch(authController.protect, productController.updateProduct)
+	.delete(authController.protect, authController.restrictTo('admin'), productController.deleteProduct);
 
 module.exports = router;
