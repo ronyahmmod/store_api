@@ -6,6 +6,7 @@ const AppError = require('./utils/appError');
 
 // CREATING APP
 const app = express();
+
 // LOAD LIBRARY
 loadLibrary(app);
 // MOUNTING APP WITH ROUTER
