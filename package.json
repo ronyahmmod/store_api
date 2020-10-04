@@ -4,12 +4,10 @@
 	"description": "This is application that provide api service of store database",
 	"main": "app.js",
 	"scripts": {
-		"start": "nodemon server.js"
+		"start": "nodemon server.js",
+		"debug": "ndb server.js"
 	},
-	"keywords": [
-		"store_api",
-		"store"
-	],
+	"keywords": [ "store_api", "store" ],
 	"author": "MD. Rony Ahmmod",
 	"license": "MIT",
 	"dependencies": {
