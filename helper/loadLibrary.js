@@ -7,6 +7,7 @@ const mongoSantize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const cors = require('cors');
 
 const loadLibrary = (app) => {
@@ -16,6 +17,7 @@ const loadLibrary = (app) => {
 	// SET PATH OF STATIC FILES
 	app.use(express.static(path.join(__dirname, 'public')));
 	app.use(bodyParser.json()).use(bodyParser.urlencoded({ extended: false }));
+	app.use(cookieParser());
 	app.use(cors());
 
 	// SECURE HTTP HEADERS
@@ -54,6 +56,7 @@ const loadLibrary = (app) => {
 	// CUSTOM MIDDLEWARE FUNCTION FOR GENERATING requestTime of req
 	app.use((req, res, next) => {
 		req.requestTime = new Date().toISOString();
+		console.log(req.cookies);
 		next();
 	});
 };

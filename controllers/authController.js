@@ -6,7 +6,7 @@ const User = require('../models/userModel');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 const sendEmail = require('../utils/mail');
-const { resolveAny } = require('dns');
+
 
 const signToken = (id) => {
 	return jwt.sign({ id: id }, process.env.JWT_SECRET, {

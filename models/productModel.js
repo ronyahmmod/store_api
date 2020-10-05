@@ -29,7 +29,7 @@ const productSchema = new mongoose.Schema(
 			type: String,
 			required: [ true, 'Please provide base unit like, cm, inch, ft, etc' ],
 			trim: true,
-			enum: [ 'cm', 'ft', 'inch' ],
+			enum: [ 'cm', 'ft', 'inch', 'kg' ],
 			default: 'cm'
 		},
 		activeForSale: {
