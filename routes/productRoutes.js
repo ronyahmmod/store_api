@@ -6,7 +6,7 @@ const authController = require('../controllers/authController');
 const router = express.Router();
 
 // product/5f733307c26ef62f0083f77f/stock
-router.use('/:productId/stock', stockRouter);
+router.use('/:productId/stocks', stockRouter);
 router
 	.route('/')
 	.get(authController.protect, authController.restrictTo('employe'), productController.getAllProduct)

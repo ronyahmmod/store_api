@@ -10,10 +10,10 @@ const mounting = (app) => {
 	app.use('/', viewRouter);
 
 	app.use('/api/v1/users', userRouter);
-	app.use('/api/v1/category', categoryRouter);
-	app.use('/api/v1/product', productRouter);
-	app.use('/api/v1/stock', stockRouter);
-	app.use('/api/v1/sale', saleRouter);
+	app.use('/api/v1/categories', categoryRouter);
+	app.use('/api/v1/products', productRouter);
+	app.use('/api/v1/stocks', stockRouter);
+	app.use('/api/v1/sales', saleRouter);
 };
 
 module.exports = mounting;
