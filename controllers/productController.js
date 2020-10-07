@@ -12,13 +12,11 @@ exports.createProduct = catchAsync(async (req, res, next) => {
 		color: req.body.color,
 		size: req.body.size,
 		baseUnit: req.body.baseUnit,
-		activeForSale: req.body.activeForSale,
 		company: req.body.company,
 		origin: req.body.origin,
 		type: req.body.type,
 		model: req.body.model,
 		category: req.body.category,
-		taxPercentage: req.body.taxPercentage,
 		remark: req.body.remark
 	});
 
